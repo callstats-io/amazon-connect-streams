@@ -192,6 +192,8 @@
 
                     session.remoteAudioElement = document.getElementById('remote-audio');
                     session.connect();
+                    var bus = connect.core.getEventBus();
+                    bus.trigger(contact.getEventName(connect.ContactEvents.SESSION), session);
                 }
         };
 
@@ -328,7 +330,7 @@
         } else {
             publishError(SoftphoneErrorTypes.WEBRTC_ERROR,
                 "webrtc system error. ",
-                "");
+                reason);
         }
     };
 
