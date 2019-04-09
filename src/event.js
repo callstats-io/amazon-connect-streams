@@ -92,6 +92,10 @@
          'accepted'
    ]);
 
+   var ConnectionEvents = connect.makeNamespacedEnum('connection', [
+      'session'
+  ]);
+
    /**---------------------------------------------------------------
     * class EventFactory
     */
@@ -279,4 +283,5 @@
    connect.AgentEvents = AgentEvents;
    connect.ContactEvents = ContactEvents;
    connect.MasterTopics = MasterTopics;
+   connect.ConnectionEvents = ConnectionEvents;
 })();

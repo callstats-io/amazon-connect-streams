@@ -119,6 +119,11 @@
             }
         };
 
+        this.onSession = function(callback) {
+            var bus = connect.core.getEventBus();
+            bus.subscribe(connect.ConnectionEvents.SESSION, callback);
+        }
+
         var onRefreshContact = function(contact, agentConnectionId) {
                 if (rtcSessions[agentConnectionId] && isContactTerminated(contact)) {
                     destroySession(agentConnectionId);
@@ -192,6 +197,8 @@
 
                     session.remoteAudioElement = document.getElementById('remote-audio');
                     session.connect();
+                    var bus = connect.core.getEventBus();
+                    bus.trigger(connect.ConnectionEvents.SESSION, session);
                 }
         };
 
